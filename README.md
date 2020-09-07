@@ -6,13 +6,22 @@ This project contains all the information needed to build a RISC-V Core which im
 
 - Introduction to RISC-V ISA
 - Setting up the environment
-
+- ABI
+- Makerchip and TL-Verilog
+  - Introduction
+  -
 
 # Introduction to RISC-V ISA
 
 RISC-V is an open standard instruction set architecture based on established reduced instruction set computer principles. It is provided under open-source license which gives it a huge advantage when compared to other commercial ISAs. It is a simple, stable, small standard base ISA with multiple standard extensions. It was developed in UC Berkeley. 
 
 The RISC-V ISA is defined as a base integer ISA, which must be present in any implementation, plus optional extensions to the base ISA. The base RISC-V ISA has a little-endian memory system. The standard is maintained by the RISC-V foundation. You can learn more about RISC-V [here](https://riscv.org/).
+
+The base integer instructions as represented as **RV32I/RV64I** and they operate on integer numbers. Other extensions are as follows:
+**RV64M** - multiply extension
+**RV64F** and **RV64D** - single and double precision floating point extension
+
+A core with all the above extensions will be represented as **RV64IMFD**. 
 
 # Setting up the environment
 
@@ -59,7 +68,17 @@ After running the above code line a number of things can be done as demonstrated
 
 ![Spike 2](https://github.com/aditikhare11/RISC-V-Core/blob/master/Outputs/sum1ton-spike2.png)
 
+# ABI 
 
+Application Binary Interface aka system call interface is used by the application program to access registers. RISC-V ABI defines standard functions for registers which allows for software interoperability. 
+
+In RISC-V specification there are 32 registers from x(0) to x(31) whose width is defined by XLEN which can be 32/64  for RV32/RV64 respectively. 
+
+The data can be loaded from memory to registers or directly sent. Memory is byte addressable. RISC-V belongs to the little endian memory addressing system. 
+
+Here is the RISC-V calling convention. [Image source:riscv](https://riscv.org/).
+
+![ABI](https://github.com/aditikhare11/RISC-V-Core/blob/master/RISC-V/ABI.PNG)
 
 
 
