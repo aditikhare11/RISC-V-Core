@@ -22,7 +22,7 @@ There are a number of cross-compilation tools available but I installed mine fro
 2. [RISC-V ISA Simulator - Spike](https://github.com/kunalg123/riscv_workshop_collaterals)
 
 Testing with a simple code:
-A basic C code called sum1ton.c which adds numbers from 1 to n is used. 
+A basic C code called [sum1ton.c](https://github.com/aditikhare11/RISC-V-Core/blob/master/Codes/sum1ton.c) which adds numbers from 1 to n is used. 
 
 **1. To compile with RISC-V GCC compiler:**
 ```
