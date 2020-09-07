@@ -32,6 +32,10 @@ riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c
 ```
 riscv64-unknown-elf-objdump -d sum1ton.o | less
 ```
+![Steps 1 and 2](https://github.com/aditikhare11/RISC-V-Core/blob/master/Outputs/sum1ton-compile.png)
+
+![Output of 2](https://github.com/aditikhare11/RISC-V-Core/blob/master/Outputs/sum1ton-disassemble.png)
+
 Number of instructions are 15 in this case. This number can be decreased by using -Ofast instead of -O1 during compiling. To see reduced instructions use
 ```
 riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c
@@ -43,6 +47,8 @@ In this case, the number of instructions are 12.
 ```
 spike pk sum1ton.o
 ```
+![Spike 1](https://github.com/aditikhare11/RISC-V-Core/blob/master/Outputs/sum1ton-spike1.png)
+
 **4. To debug using spike:**
 ```
 spike -d pk sum1ton.o
@@ -51,8 +57,9 @@ After running the above code line a number of things can be done as demonstrated
 
 ```:q``` to quit. 
 
+![Spike 2](https://github.com/aditikhare11/RISC-V-Core/blob/master/Outputs/sum1ton-spike2.png)
 
 
 
 
-![Alt Text](url)
+
