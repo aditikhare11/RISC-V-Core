@@ -82,6 +82,13 @@ Here is the RISC-V calling convention. [Image source:riscv](https://riscv.org/).
 
 Testing ABI call using [1to9_custom.c](https://github.com/aditikhare11/RISC-V-Core/blob/master/Codes/1to9_custom.c) and [load.S](https://github.com/aditikhare11/RISC-V-Core/blob/master/Codes/load.S) to find sum of numbers from 1 to 9. 
 
+Commands:
+
+```
+riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o 1to9_custom.o 1to9_custom.c load.S
+spike pk 1to9_custom.o
+```
+
 ![ABI-call](https://github.com/aditikhare11/RISC-V-Core/blob/master/Outputs/abicall.png)
 
 
