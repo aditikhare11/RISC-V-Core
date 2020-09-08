@@ -9,9 +9,9 @@ This project contains all the information needed to build a RISC-V Core which im
 - [ABI](https://github.com/aditikhare11/RISC-V-Core#abi)
 - [Makerchip and TL-Verilog](https://github.com/aditikhare11/RISC-V-Core#makerchip-and-tl-verilog)
   - [Introduction](https://github.com/aditikhare11/RISC-V-Core#a-introduction)
-  - [Implementation of a RISC-V core](https://github.com/aditikhare11/RISC-V-Core#implementation-of-a-risc-v-core)
-  - [Testing the core with a testbench](https://github.com/aditikhare11/RISC-V-Core#testing-the-core-with-a-testbench)
-  - [Pipelining the RISC-V core](https://github.com/aditikhare11/RISC-V-Core#testing-the-core-with-a-testbench)
+  - [Implementation of a RISC-V core](https://github.com/aditikhare11/RISC-V-Core#b-implementation-of-a-risc-v-core)
+  - [Testing the core with a testbench](https://github.com/aditikhare11/RISC-V-Core#c-testing-the-core-with-a-testbench)
+  - [Pipelining the RISC-V core](https://github.com/aditikhare11/RISC-V-Core#d-pipelining-the-risc-v-core)
 - [Future work](https://github.com/aditikhare11/RISC-V-Core#future-work)
 - [Acknowledgements](https://github.com/aditikhare11/RISC-V-Core#acknowledgements)
 
