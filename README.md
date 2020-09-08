@@ -4,16 +4,16 @@ This project contains all the information needed to build a RISC-V Core which im
 
 ## Table Of Contents
 
-- Introduction to RISC-V ISA
-- Setting up the environment
-- ABI
-- Makerchip and TL-Verilog
-  - Introduction
-  - Implementation of a RISC-V core 
-  - Testing the core with a testbench
-  - Pipelining the RISC-V core
-- Future work
-- Acknowledgements
+- [Introduction to RISC-V ISA](https://github.com/aditikhare11/RISC-V-Core#introduction-to-risc-v-isa)
+- [Setting up the environment](https://github.com/aditikhare11/RISC-V-Core#setting-up-the-environment)
+- [ABI](https://github.com/aditikhare11/RISC-V-Core#abi)
+- [Makerchip and TL-Verilog](https://github.com/aditikhare11/RISC-V-Core#makerchip-and-tl-verilog)
+  - [Introduction](https://github.com/aditikhare11/RISC-V-Core#1-introduction)
+  - [Implementation of a RISC-V core](https://github.com/aditikhare11/RISC-V-Core#implementation-of-a-risc-v-core)
+  - [Testing the core with a testbench](https://github.com/aditikhare11/RISC-V-Core#testing-the-core-with-a-testbench)
+  - [Pipelining the RISC-V core](https://github.com/aditikhare11/RISC-V-Core#testing-the-core-with-a-testbench)
+- [Future work](https://github.com/aditikhare11/RISC-V-Core#future-work)
+-[Acknowledgements](https://github.com/aditikhare11/RISC-V-Core#acknowledgements)
 
 # Introduction to RISC-V ISA
 
@@ -22,8 +22,9 @@ RISC-V is an open standard instruction set architecture based on established red
 The RISC-V ISA is defined as a base integer ISA, which must be present in any implementation, plus optional extensions to the base ISA. The base RISC-V ISA has a little-endian memory system. The standard is maintained by the RISC-V foundation. You can learn more about RISC-V [here](https://riscv.org/).
 
 The base integer instructions as represented as **RV32I/RV64I** and they operate on integer numbers. Other extensions are as follows:
-**RV64M** - multiply extension
-**RV64F** and **RV64D** - single and double precision floating point extension
+
+- **RV64M** - multiply extension
+- **RV64F** and **RV64D** - single and double precision floating point extension
 
 A core with all the above extensions will be represented as **RV64IMFD**. 
 
@@ -125,7 +126,7 @@ Here the instruction memory is added to the program. The instruction memory cont
 ![Fetch](https://github.com/aditikhare11/RISC-V-Core/blob/master/RISC-V/Fetch.PNG)
 
 
-**[3. Instruction Decode](https://github.com/aditikhare11/RISC-V-Core/blob/master/Makerchip%20Codes/Instruction%20Decode) **
+**[3. Instruction Decode](https://github.com/aditikhare11/RISC-V-Core/blob/master/Makerchip%20Codes/Instruction%20Decode)**
 
 Instruction type is decoded first using 5 bits of the instruction instr\[6:2]. 
 
@@ -137,15 +138,15 @@ Next step is to calculate the 32 bit immediate value (imm\[31:0]) based on the i
 
 Other function fields like funct7, rs2, rs1, funct3, rd and opcode are extracted based on the instruction type. At this point valid condtions need to be defined for fields like rs1, rs2, funct3 and funct7 because they are unique to only certain instruction types. 
 
-Only 8 operations are implemented at this stage namely BEQ, BNE, BLT, BGE, BLTU, BGEU, ADDI and ADD. The other operations from the RV32I Base Instruction Set will be implemented in the later steps. To see the complete list with the associated instruction fields click [here]().
+Only 8 operations are implemented at this stage namely BEQ, BNE, BLT, BGE, BLTU, BGEU, ADDI and ADD. The other operations from the RV32I Base Instruction Set will be implemented in the later steps. To see the complete list with the associated instruction fields click [here](https://github.com/aditikhare11/RISC-V-Core#pipelining-the-risc-v-core).
 
 **[4. Register File Read](https://github.com/aditikhare11/RISC-V-Core/blob/master/Makerchip%20Codes/Register%20File%20Read)**
 
-The register file macro is added which can be viewed the "NAV-TLV" tab on Makerchip. The two source register fields defined as rs1 and rs2 are fed as inputs to the register file and the outputs are the contents of the source registers. The enable pins are set based on the valid conditions for rs1 and rs2 as defined in the previous step. This step onwards, the screenshots aren't clear as the design gets larger. 
+The register file macro is added which can be viewed under the "NAV-TLV" tab on Makerchip. The two source register fields defined as rs1 and rs2 are fed as inputs to the register file and the outputs are the contents of the source registers. The respective enable bits are set based on the valid conditions for rs1 and rs2 as defined in the previous step. 
 
 ![File Read](https://github.com/aditikhare11/RISC-V-Core/blob/master/RISC-V/Register%20File.PNG)
 
-**[5. ALU](https://github.com/aditikhare11/RISC-V-Core/blob/master/Makerchip%20Codes/ALU%20for%20addition) **
+**[5. ALU](https://github.com/aditikhare11/RISC-V-Core/blob/master/Makerchip%20Codes/ALU%20for%20addition)**
 
 The Arithmetic Logic Unit is the component that computes the result based on the selected operation. At this point the code only supports ADD and ADDI operations to execute the test code. All operations will be added at a later step. 
 
@@ -162,14 +163,17 @@ The final step is to add support for branch instructions. A branch target pc has
 ## Testing the core with a testbench
 
 Now that our implementation is complete, a simple testbench statement can be added to ensure the core is working correctly. 
-When the following line of code is added on Makerchip, the simulation will pass only if the value stored in r10 = sum of numbers from 1 to 9. In the instruction memory, r10 has been used to store the sum. The simulation passed message can be seen under the "Log" tab and the asm file to compute sum can be viewed in the start under the "Editor" tab.[Click here](https://github.com/aditikhare11/RISC-V-Core/blob/master/Makerchip%20Codes/Core%20with%20testbench) to view to design.  
+When the following line of code is added on Makerchip, the simulation will pass only if the value stored in r10 = sum of numbers from 1 to 9. 
+
 ```
 *passed = |cpu/xreg[10]>>5$value == (1+2+3+4+5+6+7+8+9);
 ```
+In the instruction memory, r10 has been used to store the sum. The simulation passed message can be seen under the "Log" tab and the asm file to compute sum can be viewed in the start under the "Editor" tab
+[Click here](https://github.com/aditikhare11/RISC-V-Core/blob/master/Makerchip%20Codes/Core%20with%20testbench) to view to design.  
 
 ## Pipelining the RISC-V core
 
-The RISC-V core designed is divided into 5 pipeline stages. Pipelining in Makerchip is extremely simple. To define a pipeline use the following:
+The RISC-V core designed is divided into 5 pipeline stages. Pipelining in Makerchip is extremely simple. To define a pipeline use the following syntax:
 ```
 |<pipeline_name>
   @<pipeline_stage>
@@ -199,7 +203,7 @@ The snapshot of the final core can be seen below. [Click here](http://makerchip.
 
 ## Future Work 
 
-This project was done as a part of the **RISC-V based MYTH (Microprocessor for You in Thirty Hours)** conducted by **Kunal Ghosh** and **Steve Hoover**. The current project was designed in 30 hours over a span of 5 days. It implements almost the entire RV32I base instruction set. Future work involves modifying the current design to implement support for the remaining operations and also implementation of other standard extensions like M, F and D. 
+This project was done as a part of the [**RISC-V based MYTH (Microprocessor for You in Thirty Hours)**](https://www.vlsisystemdesign.com/riscv-based-myth/) workshop conducted by **Kunal Ghosh** and **Steve Hoover**. The current project implements almost the entire RV32I base instruction set. Future work involves modifying the current design to implement support for the remaining operations and also implementation of other standard extensions like M, F and D. 
 
 ## Acknowledgements
 
