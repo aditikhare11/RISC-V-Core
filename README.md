@@ -13,7 +13,7 @@ This project contains all the information needed to build a RISC-V Core which im
   - [Testing the core with a testbench](https://github.com/aditikhare11/RISC-V-Core#testing-the-core-with-a-testbench)
   - [Pipelining the RISC-V core](https://github.com/aditikhare11/RISC-V-Core#testing-the-core-with-a-testbench)
 - [Future work](https://github.com/aditikhare11/RISC-V-Core#future-work)
--[Acknowledgements](https://github.com/aditikhare11/RISC-V-Core#acknowledgements)
+- [Acknowledgements](https://github.com/aditikhare11/RISC-V-Core#acknowledgements)
 
 # Introduction to RISC-V ISA
 
